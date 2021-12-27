@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_8_Matchsticks", "Day_8_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_9_All_in_a_Single_Night", "Day_9_All_in_a_Single_Night\Day_9_All_in_a_Single_Night.csproj", "{728D8F50-DA02-4DEA-B8C9-919673047CCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_10_Elves_Look_Elves_Say", "Day_10_Elves_Look_Elves_Say\Day_10_Elves_Look_Elves_Say.csproj", "{F27EF1AC-00AF-488F-B698-10ECCD40AAAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{728D8F50-DA02-4DEA-B8C9-919673047CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{728D8F50-DA02-4DEA-B8C9-919673047CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{728D8F50-DA02-4DEA-B8C9-919673047CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F27EF1AC-00AF-488F-B698-10ECCD40AAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F27EF1AC-00AF-488F-B698-10ECCD40AAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F27EF1AC-00AF-488F-B698-10ECCD40AAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F27EF1AC-00AF-488F-B698-10ECCD40AAAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
