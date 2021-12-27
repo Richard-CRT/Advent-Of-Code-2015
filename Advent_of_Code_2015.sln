@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_5_Doesn't_He_Have_Inter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_6_Probably_a_Fire_Hazard", "Day_6_Probably_a_Fire_Hazard\Day_6_Probably_a_Fire_Hazard.csproj", "{FAD448F1-7455-4801-AB7D-853EE06762BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_7_Some_Assembly_Required", "Day_7_Some_Assembly_Required\Day_7_Some_Assembly_Required.csproj", "{15CB9D50-FD6D-42D6-B208-66ABF77BA1D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{FAD448F1-7455-4801-AB7D-853EE06762BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAD448F1-7455-4801-AB7D-853EE06762BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAD448F1-7455-4801-AB7D-853EE06762BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15CB9D50-FD6D-42D6-B208-66ABF77BA1D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15CB9D50-FD6D-42D6-B208-66ABF77BA1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15CB9D50-FD6D-42D6-B208-66ABF77BA1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15CB9D50-FD6D-42D6-B208-66ABF77BA1D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
