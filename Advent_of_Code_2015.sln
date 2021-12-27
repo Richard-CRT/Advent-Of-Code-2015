@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_6_Probably_a_Fire_Hazar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_7_Some_Assembly_Required", "Day_7_Some_Assembly_Required\Day_7_Some_Assembly_Required.csproj", "{15CB9D50-FD6D-42D6-B208-66ABF77BA1D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_8_Matchsticks", "Day_8_Matchsticks\Day_8_Matchsticks.csproj", "{72BFF915-E961-443E-9C2F-5F7C943DB985}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{15CB9D50-FD6D-42D6-B208-66ABF77BA1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15CB9D50-FD6D-42D6-B208-66ABF77BA1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15CB9D50-FD6D-42D6-B208-66ABF77BA1D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72BFF915-E961-443E-9C2F-5F7C943DB985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72BFF915-E961-443E-9C2F-5F7C943DB985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72BFF915-E961-443E-9C2F-5F7C943DB985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72BFF915-E961-443E-9C2F-5F7C943DB985}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
