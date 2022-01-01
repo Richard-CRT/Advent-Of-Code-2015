@@ -7,7 +7,9 @@ void PrintPassword(char[] password)
     Console.WriteLine();
 }
 
+#pragma warning disable CS8321 // Local function is declared but never used
 bool CheckValid(char[] password)
+#pragma warning restore CS8321 // Local function is declared but never used
 {
     HashSet<char> existingPairs = new HashSet<char>();
     bool increasingStraight = false;
