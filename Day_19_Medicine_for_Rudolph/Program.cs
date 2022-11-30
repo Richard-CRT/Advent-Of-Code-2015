@@ -22,22 +22,41 @@ void P1()
 
 void P2()
 {
-    List<Formula> reducedFormulae = new List<Formula>() { InitialFormula };
+    List<string> reducedFormulaeStrings = new List<string>() { InitialFormula.ToString() };
     int steps = 0;
     while (true)
     {
-        List<Formula> newReducedFormulae = new List<Formula>();
-        foreach (Formula formula in reducedFormulae)
-            newReducedFormulae.AddRange(formula.Reduce());
-        if (newReducedFormulae.Count == 0)
+        List<string> newReducedFormulaeStrings = new List<string>();
+        foreach (string formulaString in reducedFormulaeStrings)
+            newReducedFormulaeStrings.AddRange(Reduce(formulaString));
+        if (newReducedFormulaeStrings.Count == 0)
             break;
-        var temp1 = newReducedFormulae.Distinct();
-        List<Formula> temp2 = temp1.OrderBy(x => x.SubFormulae.Count).ToList();
-        reducedFormulae = temp2.GetRange(0,Math.Min(100, temp2.Count));
+        var temp1 = newReducedFormulaeStrings.Distinct();
+        List<string> temp2 = temp1.OrderBy(x => x.Length).ToList();
+        reducedFormulaeStrings = temp2.GetRange(0, Math.Min(1000, temp2.Count));
         steps++;
     }
     Console.WriteLine(steps);
     Console.ReadLine();
+}
+
+List<string> Reduce(string formulaString)
+{
+    List<string> result = new List<string>();
+    string strRepr = formulaString;
+    foreach (string subStrRepr in Formula.ReverseMap.Keys)
+    {
+        for (int i = 0; i < strRepr.Length - subStrRepr.Length + 1; i++)
+        {
+            if (strRepr.Substring(i, subStrRepr.Length) == subStrRepr)
+            {
+                string strReplacement = Formula.ReverseMap[subStrRepr].ToString();
+                string strReprCopy = strRepr.Substring(0, i) + strReplacement + strRepr.Substring(i + subStrRepr.Length);
+                result.Add(strReprCopy);
+            }
+        }
+    }
+    return result;
 }
 
 P1();
@@ -141,25 +160,6 @@ public class Formula
             this.PossibleReplacements = possibleReplacements;
             return this.PossibleReplacements;
         }
-    }
-
-    public List<Formula> Reduce()
-    {
-        List<Formula> result = new List<Formula>();
-        string strRepr = this.ToString();
-        foreach (string subStrRepr in Formula.ReverseMap.Keys)
-        {
-            for (int i = 0; i < strRepr.Length - subStrRepr.Length + 1; i++)
-            {
-                if (strRepr.Substring(i, subStrRepr.Length) == subStrRepr)
-                {
-                    string strReplacement = Formula.ReverseMap[subStrRepr].ToString();
-                    string strReprCopy = strRepr.Substring(0, i) + strReplacement + strRepr.Substring(i + subStrRepr.Length);
-                    result.Add(Formula.SafeMap(strReprCopy));
-                }
-            }
-        }
-        return result;
     }
 
     public override string ToString()
