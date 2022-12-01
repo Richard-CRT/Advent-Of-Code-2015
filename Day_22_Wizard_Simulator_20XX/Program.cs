@@ -100,7 +100,6 @@ void P1()
 void P2()
 {
     Dictionary<int, Spell> playerInstructions = new Dictionary<int, Spell>();
-    //Dictionary<int, Spell> playerInstructions = new Dictionary<int, Spell> { { 0, Spell.Poison }, { 1, Spell.Recharge }, { 2, Spell.Shield }, { 3, Spell.Poison }, { 5, Spell.Shield }, { 6, Spell.Poison } };
     int maxTurnNum = 0;
     int minMana = int.MaxValue;
     for (int j = 0; j < 300e3; j++)
