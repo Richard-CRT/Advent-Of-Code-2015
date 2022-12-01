@@ -10,7 +10,7 @@ void P1()
     Dictionary<int, Spell> playerInstructions = new Dictionary<int, Spell>();
     int maxTurnNum = 0;
     int minMana = int.MaxValue;
-    while (true)
+    for (int j = 0; j < 300e3; j++)
     {
         AoCUtilities.DebugWriteLine("Player Instructions: ");
         foreach (KeyValuePair<int, Spell> kVP in playerInstructions)
@@ -55,7 +55,6 @@ void P1()
             if (Character.Player.TotalSpentMana < minMana)
             {
                 minMana = Character.Player.TotalSpentMana;
-                Console.WriteLine(minMana);
             }
 
             //Console.ReadLine();
@@ -76,7 +75,7 @@ void P1()
             {
                 if (playerInstructions[i] == Spell.Recharge)
                 {
-                    playerInstructions.Remove(i);
+                    playerInstructions[i] = Spell.MagicMissile;
                     i++;
                 }
                 else
@@ -94,15 +93,17 @@ void P1()
         if (notGoingToWin)
             break;
     }
+    Console.WriteLine(minMana);
+    Console.ReadLine();
 }
 
 void P2()
 {
-    //Dictionary<int, Spell> playerInstructions = new Dictionary<int, Spell>();
-    Dictionary<int, Spell> playerInstructions = new Dictionary<int, Spell> { { 0, Spell.Poison }, { 1, Spell.Recharge }, { 2, Spell.Shield }, { 3, Spell.Poison }, { 5, Spell.Shield }, { 6, Spell.Poison } };
+    Dictionary<int, Spell> playerInstructions = new Dictionary<int, Spell>();
+    //Dictionary<int, Spell> playerInstructions = new Dictionary<int, Spell> { { 0, Spell.Poison }, { 1, Spell.Recharge }, { 2, Spell.Shield }, { 3, Spell.Poison }, { 5, Spell.Shield }, { 6, Spell.Poison } };
     int maxTurnNum = 0;
     int minMana = int.MaxValue;
-    while (true)
+    for (int j = 0; j < 300e3; j++)
     {
         AoCUtilities.DebugWriteLine("Player Instructions: ");
         foreach (KeyValuePair<int, Spell> kVP in playerInstructions)
@@ -120,10 +121,18 @@ void P2()
             Character.Player.Hitpoints -= 1;
             if (!Character.Player.Alive)
                 break;
-            Character.Player.Turn(turnNum, playerInstructions);
+            if (!Character.Player.Turn(turnNum, playerInstructions))
+            {
+                Character.Player.Hitpoints = 0;
+                break;
+            }
             if (!Character.Player.Alive || !Character.Boss.Alive)
                 break;
-            Character.Boss.Turn(turnNum);
+            if (!Character.Boss.Turn(turnNum))
+            {
+                Character.Player.Hitpoints = 0;
+                break;
+            }
             if (!Character.Player.Alive || !Character.Boss.Alive)
                 break;
 
@@ -137,20 +146,8 @@ void P2()
         {
             if (Character.Player.TotalSpentMana < minMana)
             {
-                Console.WriteLine("Player Wins");
-
-                Console.WriteLine("Player Instructions: ");
-                foreach (KeyValuePair<int, Spell> kVP in playerInstructions)
-                {
-                    Console.WriteLine($"   {kVP.Key}: {kVP.Value}");
-                }
-                Console.WriteLine();
-
-                Console.WriteLine(Character.Player.TotalSpentMana);
                 minMana = Character.Player.TotalSpentMana;
             }
-
-            //Console.ReadLine();
         }
         else
             AoCUtilities.DebugWriteLine("Boss Wins");
@@ -163,7 +160,7 @@ void P2()
             {
                 if (playerInstructions[i] == Spell.Recharge)
                 {
-                    playerInstructions.Remove(i);
+                    playerInstructions[i] = Spell.MagicMissile;
                     i++;
                 }
                 else
@@ -181,9 +178,12 @@ void P2()
         if (notGoingToWin)
             break;
     }
+
+    Console.WriteLine(minMana);
+    Console.ReadLine();
 }
 
-//P1();
+P1();
 P2();
 
 public enum Spell
@@ -250,7 +250,7 @@ public class Character
         }
     }
 
-    public void Turn(int turnNum, Dictionary<int, Spell>? instructions = null)
+    public bool Turn(int turnNum, Dictionary<int, Spell>? instructions = null)
     {
         if (this == Character.Player)
             AoCUtilities.DebugWriteLine("-- Player turn --");
@@ -260,11 +260,11 @@ public class Character
         AoCUtilities.DebugWriteLine($"   Player has {Character.Player.Hitpoints} hit points, {Character.Player.Armor} armor, {Character.Player.Mana} mana");
         Character.Player.ApplyEffects();
         if (!Character.Player.Alive)
-            return;
+            return true;
         AoCUtilities.DebugWriteLine($"   Boss has {Character.Boss.Hitpoints} hit points, {Character.Boss.Armor} armor, {Character.Boss.Mana} mana");
         Character.Boss.ApplyEffects();
         if (!Character.Boss.Alive)
-            return;
+            return true;
         AoCUtilities.DebugWriteLine($"   Player has {Character.Player.Hitpoints} hit points, {Character.Player.Armor} armor, {Character.Player.Mana} mana");
         AoCUtilities.DebugWriteLine($"   Boss has {Character.Boss.Hitpoints} hit points, {Character.Boss.Armor} armor, {Character.Boss.Mana} mana");
 
@@ -273,19 +273,27 @@ public class Character
         {
             if (instructions == null)
                 throw new NotImplementedException();
+            bool r;
             if (instructions.ContainsKey(turnNum))
-                Cast(instructions[turnNum], Character.Boss);
+                r = Cast(instructions[turnNum], Character.Boss);
+            else
+                r = Cast(Spell.MagicMissile, Character.Boss);
+            if (!r)
+                return false;
         }
         else
         {
+            bool r;
             if (instructions == null || !instructions.ContainsKey(turnNum))
-                AttackMelee(Character.Player);
+                r = AttackMelee(Character.Player);
             else
-                Cast(instructions[turnNum], Character.Player);
-
+                r = Cast(instructions[turnNum], Character.Player);
+            if (!r)
+                return false;
         }
 
         AoCUtilities.DebugWriteLine();
+        return true;
     }
 
     public void ApplyEffects()
@@ -310,10 +318,11 @@ public class Character
         }
     }
 
-    public void AttackMelee(Character otherCharacter)
+    public bool AttackMelee(Character otherCharacter)
     {
         AoCUtilities.DebugWrite($"   Swings sword: ");
         otherCharacter.ApplyDamage(Damage);
+        return true;
     }
 
     public bool SpendMana(int mana)
