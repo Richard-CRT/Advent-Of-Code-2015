@@ -133,7 +133,8 @@ public class Formula
     {
         if (this.Leaf)
         {
-            return this.PossibleReplacements;
+            if (this.PossibleReplacements != null)
+                return this.PossibleReplacements;
         }
         else
         {
@@ -160,6 +161,7 @@ public class Formula
             this.PossibleReplacements = possibleReplacements;
             return this.PossibleReplacements;
         }
+        return new List<Formula>();
     }
 
     public override string ToString()
