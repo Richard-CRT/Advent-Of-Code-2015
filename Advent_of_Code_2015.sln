@@ -47,9 +47,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day_19_Medicine_for_Rudolph
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day_20_Infinite_Elves_and_Infinite_Houses", "Day_20_Infinite_Elves_and_Infinite_Houses\Day_20_Infinite_Elves_and_Infinite_Houses.csproj", "{657E6500-DA1A-4580-8104-1B017184E310}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_21_RPG_Simulator_20XX", "Day_21_RPG_Simulator_20XX\Day_21_RPG_Simulator_20XX.csproj", "{AE802180-923C-4FBE-850C-8598F6900671}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day_21_RPG_Simulator_20XX", "Day_21_RPG_Simulator_20XX\Day_21_RPG_Simulator_20XX.csproj", "{AE802180-923C-4FBE-850C-8598F6900671}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_22_Wizard_Simulator_20XX", "Day_22_Wizard_Simulator_20XX\Day_22_Wizard_Simulator_20XX.csproj", "{61AF2C82-9EBD-4193-A3C1-3118F821A054}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day_22_Wizard_Simulator_20XX", "Day_22_Wizard_Simulator_20XX\Day_22_Wizard_Simulator_20XX.csproj", "{61AF2C82-9EBD-4193-A3C1-3118F821A054}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_23_Opening_the_Turing_Lock", "Day_23_Opening_the_Turing_Lock\Day_23_Opening_the_Turing_Lock.csproj", "{2B979EFC-609F-41B2-B9A1-5804BD15BC33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day_24_It_Hangs_in_the_Balance", "Day_24_It_Hangs_in_the_Balance\Day_24_It_Hangs_in_the_Balance.csproj", "{23C5E015-B0FB-4F80-A0CE-256BDE4E3F21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +157,14 @@ Global
 		{61AF2C82-9EBD-4193-A3C1-3118F821A054}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61AF2C82-9EBD-4193-A3C1-3118F821A054}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61AF2C82-9EBD-4193-A3C1-3118F821A054}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B979EFC-609F-41B2-B9A1-5804BD15BC33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B979EFC-609F-41B2-B9A1-5804BD15BC33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B979EFC-609F-41B2-B9A1-5804BD15BC33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B979EFC-609F-41B2-B9A1-5804BD15BC33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23C5E015-B0FB-4F80-A0CE-256BDE4E3F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C5E015-B0FB-4F80-A0CE-256BDE4E3F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C5E015-B0FB-4F80-A0CE-256BDE4E3F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C5E015-B0FB-4F80-A0CE-256BDE4E3F21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
